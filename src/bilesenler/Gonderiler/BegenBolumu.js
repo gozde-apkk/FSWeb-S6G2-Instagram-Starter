@@ -8,21 +8,28 @@ import { faComment, faHeart } from "@fortawesome/free-regular-svg-icons";
 
 const BegenBolumu = (props) => {
   // 🔥 Bu bileşenin parentının aşağıdaki propları düzgün gönderdiğinden emin olun.
-  const { gonderiyiBegen, begeniSayisi } = props;
+  const { gonderiyiBegen, begeniSayisi , setYorumYap , yorumYap} = props;
 
-  return (
+   const handleYorum = () =>{
+    setYorumYap(!yorumYap);
+   }
+   return (
     <div>
-      <div className="like-section" key="likes-icons-container">
-        <div className="like-section-wrapper">
-          <FontAwesomeIcon icon={faHeart} />
+      <div
+        className='like-section'
+        key='likes-icons-container'
+      >
+        <div onClick={gonderiyiBegen} className='like-section-wrapper'>
+          <FontAwesomeIcon icon={faHeart} onClick={gonderiyiBegen}/>
         </div>
-        <div className="like-section-wrapper">
-          <FontAwesomeIcon icon={faComment} />
+        <div className='like-section-wrapper'>
+          <FontAwesomeIcon icon={faComment} onClick={handleYorum} />
         </div>
       </div>
-      <p className="like-number">100 likes</p>
+      <p className='like-number'>{begeniSayisi} likes </p>
     </div>
   );
 };
+
 
 export default BegenBolumu;
